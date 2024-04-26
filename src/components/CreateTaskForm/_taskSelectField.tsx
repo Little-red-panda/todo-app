@@ -1,4 +1,4 @@
-import { FC, ReactElement, useState } from 'react';
+import { FC, ReactElement } from 'react';
 import {
   InputLabel,
   MenuItem,
@@ -10,15 +10,14 @@ import { ISelectField } from './interfaces/ISelectField';
 import PropTypes from 'prop-types';
 
 const TaskSelectField: FC<ISelectField> = (props): ReactElement => {
-  const [value, setValue] = useState('');
-
   const {
+    value = '',
     label = 'Select Box',
     name = 'selectBox',
     items = [{ value: '', label: 'add items' }],
     disabled = false,
     onChange = (e: SelectChangeEvent) => {
-      setValue(e.target.value as string);
+      console.log(e);
     },
   } = props;
 
@@ -45,6 +44,7 @@ const TaskSelectField: FC<ISelectField> = (props): ReactElement => {
 };
 
 TaskSelectField.propTypes = {
+  value: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
   items: PropTypes.arrayOf(

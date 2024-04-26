@@ -4,19 +4,16 @@ import TaskHeader from './_taskHeader';
 import TaskDescription from './_taskDescription';
 import TaskFooter from './_taskFooter';
 import { ITask } from './interfaces/ITask';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import { Priority } from '../CreateTaskForm/enums/Priority';
-// import { Status } from '../CreateTaskForm/enums/Status';
 import PropTypes from 'prop-types';
 import { renderPriorityBorderColor } from './helpers/renderPriorityBorderColor';
 
 const Task: FC<ITask> = (props): ReactElement => {
   const {
     title = 'Title',
-    date = dayjs(),
     description = 'Lorem ipsum dolor sit amet',
     priority = Priority.normal,
-    // status=Status.todo,
     onStatusChange = (e) => console.log(e),
     onClick = (e) => console.log(e),
   } = props;
@@ -37,7 +34,7 @@ const Task: FC<ITask> = (props): ReactElement => {
         borderColor: renderPriorityBorderColor(priority),
       }}
     >
-      <TaskHeader title={title} date={date} />
+      <TaskHeader title={title} />
       <TaskDescription description={description} />
       <TaskFooter onStatusChange={onStatusChange} onClick={onClick} />
     </Box>
