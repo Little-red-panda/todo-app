@@ -1,8 +1,7 @@
 import { Box, Chip, Typography } from '@mui/material';
 import { FC, ReactElement } from 'react';
 import { ITaskHeader } from './interfaces/ITaskHeader';
-import dayjs, { Dayjs } from 'dayjs';
-import PropTypes from 'prop-types';
+import dayjs from 'dayjs';
 
 const TaskHeader: FC<ITaskHeader> = (props): ReactElement => {
   const { title = 'Default title', date = dayjs() } = props;
@@ -17,11 +16,6 @@ const TaskHeader: FC<ITaskHeader> = (props): ReactElement => {
       </Box>
     </Box>
   );
-};
-
-TaskHeader.propTypes = {
-  title: PropTypes.string,
-  date: PropTypes.instanceOf(Dayjs),
 };
 
 export default TaskHeader;

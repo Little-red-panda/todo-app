@@ -1,19 +1,15 @@
 import { FC, ReactElement } from 'react';
-import PropTypes from 'prop-types';
 import { Box, Button, Switch, FormControlLabel } from '@mui/material';
 import { ITaskFooter } from './interfaces/ITaskFooter';
+import { Status } from '../CreateTaskForm/enums/Status';
 
 const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
   const {
+    id,
+    status = Status.todo,
     onClick = (e) => console.log(e),
     onStatusChange = (e) => console.log(e),
   } = props;
-
-  // const [checked, setChecked] = useState(true);
-
-  // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setChecked(event.target.checked);
-  // };
 
   return (
     <Box
@@ -24,24 +20,25 @@ const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
     >
       <FormControlLabel
         label="In Progress"
-        control={<Switch onChange={onStatusChange} color="warning" />}
+        control={
+          <Switch
+            onChange={(e) => onStatusChange(e, id)}
+            color="warning"
+            defaultChecked={status === Status.inProgress}
+          />
+        }
       />
       <Button
         variant="contained"
         color="success"
         size="small"
         sx={{ color: '#FFFFFF' }}
-        onClick={onClick}
+        onClick={(e) => onClick(e, id)}
       >
         Mark Complete
       </Button>
     </Box>
   );
-};
-
-TaskFooter.propTypes = {
-  onClick: PropTypes.func,
-  onStatusChange: PropTypes.func,
 };
 
 export default TaskFooter;
