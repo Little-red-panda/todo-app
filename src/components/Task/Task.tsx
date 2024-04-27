@@ -17,8 +17,8 @@ const Task: FC<ITask> = (props): ReactElement => {
     date,
     priority = Priority.normal,
     status = Status.todo,
-    onStatusChange = (e) => console.log(e),
-    onClick = (e) => console.log(e),
+    onStatusChange,
+    onClick,
     id,
   } = props;
 

@@ -5,7 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { IDateField } from './interfaces/IDateField';
 
 const TaskDateField: FC<IDateField> = (props): ReactElement => {
-  const { disabled = false, onChange = (date) => console.log(date) } = props;
+  const { value, disabled = false, onChange } = props;
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -14,6 +14,7 @@ const TaskDateField: FC<IDateField> = (props): ReactElement => {
         disabled={disabled}
         label="Task Date"
         onChange={onChange}
+        value={value}
       />
     </LocalizationProvider>
   );

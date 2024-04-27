@@ -4,12 +4,7 @@ import { ITaskFooter } from './interfaces/ITaskFooter';
 import { Status } from '../CreateTaskForm/enums/Status';
 
 const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
-  const {
-    id,
-    status = Status.todo,
-    onClick = (e) => console.log(e),
-    onStatusChange = (e) => console.log(e),
-  } = props;
+  const { id, status = Status.todo, onClick, onStatusChange } = props;
 
   return (
     <Box
@@ -24,7 +19,7 @@ const TaskFooter: FC<ITaskFooter> = (props): ReactElement => {
           <Switch
             onChange={(e) => onStatusChange(e, id)}
             color="warning"
-            defaultChecked={status === Status.inProgress}
+            checked={status === Status.inProgress}
           />
         }
       />

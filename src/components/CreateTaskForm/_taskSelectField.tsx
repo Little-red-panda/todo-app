@@ -1,11 +1,5 @@
 import { FC, ReactElement } from 'react';
-import {
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  SelectChangeEvent,
-} from '@mui/material';
+import { InputLabel, MenuItem, FormControl, Select } from '@mui/material';
 import { ISelectField } from './interfaces/ISelectField';
 
 const TaskSelectField: FC<ISelectField> = (props): ReactElement => {
@@ -15,9 +9,7 @@ const TaskSelectField: FC<ISelectField> = (props): ReactElement => {
     name = 'selectBox',
     items = [{ value: '', label: 'add items' }],
     disabled = false,
-    onChange = (e: SelectChangeEvent) => {
-      console.log(e);
-    },
+    onChange,
   } = props;
 
   return (
